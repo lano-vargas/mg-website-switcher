@@ -1,0 +1,47 @@
+<?php
+/**
+* Currency switcher
+*
+* @var \Lano\WebsiteSwitcher\Block\Website\SwitcherBlock $block
+*/
+?>
+<?php if(count($block->getWebsites()) > 1): ?>
+<div class="switcher store switcher-store" id="switcher-website">
+    <strong class="label switcher-label"><span><?= $block->escapeHtml(__('Select Website')) ?></span></strong>
+    <div class="actions dropdown options switcher-options">
+        <div class="action toggle switcher-trigger"
+             role="button"
+             tabindex="0"
+             data-mage-init='{"dropdown":{}}'
+             data-toggle="dropdown"
+             data-trigger-keypress-button="true"
+             id="switcher-store-trigger">
+            <strong>
+                <span><?= $block->getWebsite()->getName(); ?></span>
+            </strong>
+        </div>
+        <ul class="dropdown switcher-dropdown" data-target="dropdown">
+            <?php foreach ($block->getWebsites() as $website): ?>
+                <?php if($website['code'] != $block->getWebsite()->getCode()): ?>
+                <li class="website-<?= $website['code']?> switcher-option">
+                    <a href="<?= $website['url'].(!$block->getIsNoRoute()?$block->getUrlAfterBaseUrl():'');?>" data-website='{"code":"<?= $website['code']?>"}'><?= $website['name']; ?></a>
+                </li>
+                <?php endif; ?>
+            <?php endforeach; ?>
+        </ul>
+    </div>
+</div>
+<?php endif; ?>
+<?php
+$data = [
+    'divElement'       =>  '.switcher-option',
+];
+$serializedData = $this->helper('Magento\Framework\Json\Helper\Data')->jsonEncode($data);
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "websiteSwitcher": <?php /* @noEscape */ echo $serializedData; ?>
+        }
+    }
+</script>

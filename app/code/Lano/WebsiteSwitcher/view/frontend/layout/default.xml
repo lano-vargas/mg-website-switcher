@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ /**
+ * Created by PhpStorm.
+ * User: julianovargas
+ * Date: 24/03/2018
+ * Time: 19:37
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="header.panel">
+            <block class="Lano\WebsiteSwitcher\Block\Website\SwitcherBlock" name="switcher" before="-" template="Lano_WebsiteSwitcher::switcher.phtml"/>
+        </referenceContainer>
+    </body>
+</page>
