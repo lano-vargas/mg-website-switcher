@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<type name="Lano\WebsiteSwitcher\Controller\Adminhtml\Category\Image\Upload">
+    <arguments>
+        <argument name="imageUploader" xsi:type="object">Magento\Catalog\CategoryImageUpload</argument>
+    </arguments>
+</type>
+<virtualType name="Magento\Catalog\CategoryImageUpload" type="Magento\Catalog\Model\ImageUploader">
+    <arguments>
+        <argument name="baseTmpPath" xsi:type="string">catalog/tmp/category</argument>
+        <argument name="basePath" xsi:type="string">catalog/category</argument>
+        <argument name="allowedExtensions" xsi:type="array">
+            <item name="jpg" xsi:type="string">jpg</item>
+            <item name="jpeg" xsi:type="string">jpeg</item>
+            <item name="gif" xsi:type="string">gif</item>
+            <item name="png" xsi:type="string">png</item>
+        </argument>
+    </arguments>
+</virtualType>
+<preference for="Magento\Catalog\Model\Category\DataProvider" type="Lano\WebsiteSwitcher\Model\Category\DataProvider" />
+<preference for="Lano\WebsiteSwitcher\Api\TestRepositoryInterface" type="Lano\WebsiteSwitcher\Model\TestRepository" />
+<preference for="Lano\WebsiteSwitcher\Api\Data\TestInterface" type="Lano\WebsiteSwitcher\Model\Test" />
+ <preference for="Lano\WebsiteSwitcher\Api\Data\FabInterface" type="Lano\WebsiteSwitcher\Model\Fab" />
+ 
+<!--  <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="switcher_test_grid_index_data_source" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModel\Test\Collection</item>
+            </argument>
+        </arguments>
+</type>
+<type name="Lano\WebsiteSwitcher\Model\ResourceModel\Test\Collection">
+    <arguments>
+        <argument name="mainTable" xsi:type="string">lano_custom</argument>
+        <argument name="eventPrefix" xsi:type="string">lano_websiteswitcher_grid_collection</argument>
+        <argument name="eventObject" xsi:type="string">websiteswitcher_grid_collection</argument>
+        <argument name="resourceModel" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModal\Test</argument>
+    </arguments>
+</type> -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="switcher_test_grid_index_data_source" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModel\Test\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+     <type name="Lano\WebsiteSwitcher\Model\ResourceModel\Test\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lano_custom</argument>
+            <argument name="eventPrefix" xsi:type="string">switcher_test_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">switcher_grid_test_records_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModel\Test</argument>
+        </arguments>
+    </type>
+    <!-- <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+            <arguments>
+                <argument name="collections" xsi:type="array">
+                    <item name="switcher_test_grid_index_data_source" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModel\Test\Collection</item>
+                </argument>
+            </arguments>
+    </type>
+    <type name="Lano\WebsiteSwitcher\Model\ResourceModel\Test\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">lano_custom</argument>
+            <argument name="eventPrefix" xsi:type="string">switcher_test_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">switcher_grid_test_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Lano\WebsiteSwitcher\Model\ResourceModel\Test\Grid</argument>
+        </arguments>
+    </type> -->
+</config>

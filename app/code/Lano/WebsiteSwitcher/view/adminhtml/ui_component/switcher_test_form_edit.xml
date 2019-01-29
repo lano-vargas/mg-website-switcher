@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">switcher_test_form_edit.switcher_test_form_edit_data_source</item>
+            <item name="deps" xsi:type="string">switcher_test_form_edit.switcher_test_form_edit_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Employee Information</item>
+        <item name="config" xsi:type="array">
+            <item name="dataScope" xsi:type="string">data</item>
+            <item name="namespace" xsi:type="string">switcher_test_form_edit</item>
+        </item>
+        <item name="template" xsi:type="string">templates/form/collapsible</item>
+        <item name="buttons" xsi:type="array">
+           <!--  <item name="back" xsi:type="string">Sample\News\Block\Adminhtml\Author\Edit\Buttons\Back</item>
+            <item name="delete" xsi:type="string">Sample\News\Block\Adminhtml\Author\Edit\Buttons\Delete</item>
+            <item name="reset" xsi:type="string">Sample\News\Block\Adminhtml\Author\Edit\Buttons\Reset</item> -->
+            <item name="save" xsi:type="string">Lano\WebsiteSwitcher\Block\Adminhtml\Test\Edit\Buttons\Save</item>
+            <!-- <item name="save_and_continue" xsi:type="string">Sample\News\Block\Adminhtml\Author\Edit\Buttons\SaveAndContinue</item> -->
+        </item>
+    </argument>
+    <dataSource name="switcher_test_form_edit_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Lano\WebsiteSwitcher\Model\DataProvider</argument>
+            <argument name="name" xsi:type="string">switcher_test_form_edit_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">lano_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="submit_url" xsi:type="url" path="switcher/test/save"/>
+                </item>
+            </argument>
+        </argument>
+        <argument name="data" xsi:type="array">
+            <item name="js_config" xsi:type="array">
+                <item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+            </item>
+        </argument>
+    </dataSource>
+    <fieldset name="lano_custom">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="collapsible" xsi:type="boolean">true</item>
+                <item name="label" xsi:type="string" translate="true">Test Details</item>
+                <item name="sortOrder" xsi:type="number">20</item>
+            </item>
+        </argument>
+        <field name="lano_id">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Employee Id</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">test</item>
+                    <item name="dataScope" xsi:type="string">lano_id</item>
+                </item>
+            </argument>
+        </field>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Employee Name</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">test</item>
+                    <item name="dataScope" xsi:type="string">name</item>
+                </item>
+            </argument>
+        </field>
+        <field name="Email">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="dataType" xsi:type="string">text</item>
+                    <item name="label" xsi:type="string" translate="true">Employee Email</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="source" xsi:type="string">test</item>
+                    <item name="dataScope" xsi:type="string">Email</item>
+                </item>
+            </argument>
+        </field>
+    </fieldset>
+</form>
