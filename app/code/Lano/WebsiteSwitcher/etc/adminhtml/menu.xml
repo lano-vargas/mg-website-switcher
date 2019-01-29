@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Lano_WebsiteSwitcher::lano" title="LANO" module="Lano_WebsiteSwitcher" sortOrder="51" resource="Lano_WebsiteSwitcher::lano"/>
+        <add id="Lano_WebsiteSwitcher::test" title="Manage Posts" module="Lano_WebsiteSwitcher" sortOrder="10" action="switcher/test" resource="Lano_WebsiteSwitcher::lano" parent="Lano_WebsiteSwitcher::lano"/>
+    </menu>
+</config>
